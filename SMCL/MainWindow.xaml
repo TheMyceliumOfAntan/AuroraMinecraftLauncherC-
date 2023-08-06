@@ -1,0 +1,435 @@
+﻿<Window x:Class="SMCL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SMCL"
+        mc:Ignorable="d"
+        Title="Aurora Minecraft Launcher Alpha 230803 E1" Height="450" Width="800"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+        xmlns:controls="clr-namespace:ModernWpf.Controls;assembly=ModernWpf"
+        ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Background>
+        <media:ImageBrush ImageSource="/142.png" />
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+    </Window.Resources>
+    <ui:SimpleStackPanel Spacing="24" Margin="0,0,0,0">
+        <Grid Margin="0,0,0,0">
+            <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,0,0,0" Width="760" Height="700">
+                <TabControl x:Name="MainTabControl" Background="Transparent">
+                    <TabItem Header="Home">
+                        <Grid>
+                            <TextBlock Text="Welcome to Aurora!" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="35" FontFamily="Bahnschrift Light" Margin="0,-10,0,0"/>
+                            <ui:SplitButton Content="Launch" VerticalAlignment="Top" Margin="610,365,0,0" HorizontalAlignment="Left" Width="130" Height="40"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Account">
+                        <Grid>
+                            <TabControl Background="Transparent" Margin="0,0,0,0" VerticalAlignment="Top" Name="AccountTabControl">
+                                <TabItem>
+                                    <Grid VerticalAlignment="Top">
+                                        <Button Content="Add Account" Margin="645,-10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+                                        <ListView Background="Transparent" Margin="0,25,0,0" Height="375" Width="740" HorizontalAlignment="Left" >
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                        <StackPanel Orientation="Vertical">
+                                                            <TextBlock Text="{Binding Text}" />
+                                                            <TextBlock Text="{Binding Subtitle}" FontStyle="Italic" />
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                        <Label Content="No account found" FontSize="17" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible"/>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem>
+                                    <Grid>
+                                        <Label Content="Add account" FontSize="25" Margin="0,-10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+                                        <Label Content="Add account" FontSize="14" Margin="0,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+                                        <ComboBox Name="ComboBox_AddWay" Margin="230,25,0,0" Height="30" Width="500" VerticalContentAlignment="Top" HorizontalContentAlignment="Right" SelectedIndex="0">
+                                            <ComboBoxItem>Offline login</ComboBoxItem>
+                                            <ComboBoxItem>Microsoft login</ComboBoxItem>
+                                            <ComboBoxItem>Unified Pass login</ComboBoxItem>
+                                            <ComboBoxItem>Authlab Injector login</ComboBoxItem>
+                                            <ComboBoxItem>LittleSkin login</ComboBoxItem>
+                                        </ComboBox>
+                                        <TabControl x:Name="logintabcon" VerticalAlignment="Top" Margin="0,60,0,0" Background="Transparent">
+                                            <TabItem>
+                                                <Grid>
+                                                    <Label Content="Name" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <TextBox x:Name="Name" Height="30" Width="500" Margin="230,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <Button Content="Login" Margin="0,40,65,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                                    <Button Content="Cancel" Margin="65,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                                </Grid>
+                                            </TabItem>
+                                            <TabItem>
+                                                <Button Content="Login" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,100,0,0"/>
+                                            </TabItem>
+                                            <TabItem>
+                                                <Grid>
+                                                    <Label Content="Your code:" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="Lab_Code"/>
+                                                    <Label Content="Microsoft login is in progress. Please enter the code into the open browser window to log in." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,30,0,0"/>
+                                                    <Button Content="Open Browser" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,70,0,0"/>
+                                                    <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,70,0,0"/>
+                                                </Grid>
+                                            </TabItem>
+                                            <TabItem>
+                                                <Grid>
+                                                    <Label Content="Passport ID" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <TextBox x:Name="id" Height="30" Width="500" Margin="230,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <Label Content="User" Margin="0,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <TextBox x:Name="user_pass" Height="30" Width="500" Margin="230,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <Label Content="Password" Margin="0,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                                    <PasswordBox x:Name="password_pass" Height="30" Width="500" Margin="230,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <Button Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                                                    <Button Content="Registered" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,130,0,0"/>
+                                                    <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,130,0,0"/>
+                                                </Grid>
+                                            </TabItem>
+                                            <TabItem>
+                                                <Grid>
+                                                    <Label Content="URL" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <TextBox x:Name="url" Height="30" Width="500" Margin="230,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <Label Content="User" Margin="0,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <TextBox x:Name="user_oth" Height="30" Width="500" Margin="230,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <Label Content="Password" Margin="0,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <PasswordBox x:Name="password_oth" Height="30" Width="500" Margin="230,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                                    <Button Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                                                    <Button Content="Registered" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,130,0,0"/>
+                                                    <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,130,0,0"/>
+                                                </Grid>
+                                            </TabItem>
+                                        </TabControl>
+                                    </Grid>
+                                </TabItem>
+                            </TabControl>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Download">
+                        <Grid>
+                            <Grid Margin="0,30,0,0">
+                                <TabControl Background="Transparent">
+                                    <TabItem>
+                                        <ListView x:Name="List_MinecraftList">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                        <StackPanel Margin="10,0,0,0">
+                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                <TextBlock Text="{Binding Date}" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </TabItem>
+                                    <TabItem>
+                                        <Grid>
+                                            <Grid Background="Transparent" Width="660" Height="400" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,-10,0,0">
+                                                <TabControl>
+                                                    <TabItem>
+                                                        <ListView x:Name="List_Minecraft">
+                                                            <ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                                        <StackPanel Margin="10,0,0,0">
+                                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                                <TextBlock Text="{Binding Date}" />
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>
+                                                        </ListView>
+                                                    </TabItem>
+                                                    <TabItem>
+                                                        <ListView x:Name="List_Forge">
+                                                            <ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                                        <StackPanel Margin="10,0,0,0">
+                                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                                <TextBlock Text="{Binding Date}" />
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>
+                                                        </ListView>
+                                                    </TabItem>
+                                                    <TabItem>
+                                                        <ListView x:Name="List_Fabric">
+                                                            <ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                                        <StackPanel Margin="10,0,0,0">
+                                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                                <TextBlock Text="{Binding Date}" />
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>
+                                                        </ListView>
+                                                    </TabItem>
+                                                    <TabItem>
+                                                        <ListView x:Name="List_FabricAPI">
+                                                            <ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                                        <StackPanel Margin="10,0,0,0">
+                                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                                <TextBlock Text="{Binding Date}" />
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>
+                                                        </ListView>
+                                                    </TabItem>
+                                                    <TabItem>
+                                                        <ListView x:Name="List_OptiFine">
+                                                            <ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                                        <StackPanel Margin="10,0,0,0">
+                                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                                <TextBlock Text="{Binding Date}" />
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>
+                                                        </ListView>
+                                                    </TabItem>
+                                                    <TabItem>
+                                                        <ListView x:Name="List_OptiFabric">
+                                                            <ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                                        <StackPanel Margin="10,0,0,0">
+                                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                                <TextBlock Text="{Binding Date}" />
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>
+                                                        </ListView>
+                                                    </TabItem>
+                                                    <TabItem>
+                                                        <ListView x:Name="List_LiteLoader">
+                                                            <ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                                        <StackPanel Margin="10,0,0,0">
+                                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                                <TextBlock Text="{Binding Date}" />
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>
+                                                        </ListView>
+                                                    </TabItem>
+                                                </TabControl>
+                                            </Grid>
+                                            <ui:NavigationView PaneDisplayMode="Left"  Margin="0,-10,0,0" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Background="Transparent" Name="Navi_downloadinstallpack" Width="100" HorizontalAlignment="Left" IsPaneToggleButtonVisible="False">
+                                                <ui:NavigationView.MenuItems>
+                                                    <ui:NavigationViewItem Content="Minecraft" Name="Minecraft" />
+                                                    <ui:NavigationViewItem Content="Forge" Name="Forge"/>
+                                                    <ui:NavigationViewItem Content="Fabric" Name="Fabric"/>
+                                                    <ui:NavigationViewItem Content="Fabric API" Name="Fabric_API"/>
+                                                    <ui:NavigationViewItem Content="Optifine" Name="Optifine"/>
+                                                    <ui:NavigationViewItem Content="OptiFabric" Name="OptiFabric"/>
+                                                    <ui:NavigationViewItem Content="LiteLoader" Name="LiteLoader"/>
+                                                </ui:NavigationView.MenuItems>
+                                            </ui:NavigationView>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem>
+                                        <ListView x:Name="List_Mods">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                        <StackPanel Margin="10,0,0,0">
+                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                <TextBlock Text="{Binding Date}" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </TabItem>
+                                    <TabItem>
+                                        <ListView x:Name="List_Modpacks">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{Binding Image}" Width="50" Height="50" />
+                                                        <StackPanel Margin="10,0,0,0">
+                                                            <TextBlock Text="{Binding Version}" FontWeight="Bold" />
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock Text="{Binding Type}" Margin="0,0,10,0" />
+                                                                <TextBlock Text="{Binding Date}" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </TabItem>
+                                </TabControl>
+                            </Grid>
+                            <Grid Margin="0,0,0,0">
+                                <ui:NavigationView PaneDisplayMode="Top" Margin="0,-10,0,0" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Background="Transparent" Name="Navi_download">
+                                    <ui:NavigationView.MenuItems>
+                                        <ui:NavigationViewItem Content="Automatic installation" Name="Automatic_installation"/>
+                                        <ui:NavigationViewItem Content="Installation package" Name="Installation_package"/>
+                                        <ui:NavigationViewItem Content="Mods" Name="Mods"/>
+                                        <ui:NavigationViewItem Content="Modpacks" Name="Modpacks"/>
+                                    </ui:NavigationView.MenuItems>
+                                </ui:NavigationView>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Settings">
+                        <ScrollViewer  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Height="415" Margin="0,-290,0,0">
+                            <StackPanel HorizontalAlignment="Left" Height="800" Margin="5,5,0,0" VerticalAlignment="Top" Width="740">
+                                <Label Width="120" Height="40" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Settings" FontSize="30" />
+                                <Label Width="140" Height="25" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Game Settings" FontSize="20"/>
+                                <Label Width="120" Height="20" Margin="20,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Version isolation" FontSize="14"/>
+                                <ui:ToggleSwitch Width="40" Height="30" Margin="0,-45,50,0" VerticalAlignment="Stretch" HorizontalAlignment="Right" IsOn="True" Name="ToggleSwitch_VerIso"/>
+                                <Label Width="120" Height="20" Margin="20,5,0,-5" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Launcher visibility" FontSize="14"/>
+                                <ComboBox Width="370" Height="30" Margin="0,-20,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedIndex="0" FontSize="14" Name="ComboBox_LauncherVisibility">
+                                    <ComboBoxItem>Always keep the initiator visible</ComboBoxItem>
+                                    <ComboBoxItem>Hide after game startup, reopen after game exit</ComboBoxItem>
+                                    <ComboBoxItem>Minimize after game startup</ComboBoxItem>
+                                    <ComboBoxItem>Exit after game startup</ComboBoxItem>
+                                </ComboBox>
+                                <Label Width="150" Height="20" Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Game Window Size" FontSize="14"/>
+                                <Label Width="75" Height="20" Margin="0,-20,325,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Full screen" FontSize="14"/>
+                                <ui:ToggleSwitch Width="40" Height="30" Margin="0,-27,280,0" VerticalAlignment="Stretch" HorizontalAlignment="Right" IsOn="False" Name="ToggleSwitch_WindowSize"/>
+                                <TextBox Width="100" Height="30" Margin="0,-30,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" Text="480" Name="TextBox_Height"/>
+                                <TextBox Width="100" Height="30" Margin="0,-32,170,0" VerticalAlignment="Top" HorizontalAlignment="Right" Text ="854" Name="TextBox_Width"/>
+                                <Label Width="10" Height="15" Margin="0,-25,155,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="X" FontSize="14"/>
+                                <Label Width="150" Height="20" Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Java" FontSize="14"/>
+                                <ComboBox Width="370" Height="30" Margin="0,-25,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedIndex="0" FontSize="14" Name="ComboBox_Java">
+                                    <ComboBoxItem>Auto select</ComboBoxItem>
+                                </ComboBox>
+                                <Label Width="170" Height="20" Margin="20,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Maximum Memory (MB)" FontSize="14"/>
+                                <TextBox Width="190" Height="30" Margin="0,-30,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" x:Name="TextBox_Memory"/>
+                                <ui:ToggleSwitch Width="40" Height="30" Margin="0,-32,245,0" VerticalAlignment="Top" HorizontalAlignment="Right" IsOn="True" Name="ToggleSwitch_AutoSetMemory"/>
+                                <Label Width="150" Height="20" Margin="20,-25,270,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Automatic settings" FontSize="14"/>
+                                <Label Width="170" Height="20" Margin="20,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="JVM parameters" FontSize="14"/>
+                                <TextBox Width="370" Height="30" Margin="0,-30,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" x:Name="TextBox_JVM"/>
+                                <Label Width="300" Height="20" Margin="20,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Ignore Java compatibility warnings" FontSize="14"/>
+                                <ui:ToggleSwitch Width="40" Height="30" Margin="0,-40,50,0" VerticalAlignment="Stretch" HorizontalAlignment="Right" IsOn="False" Name="ToggleSwitch_IJCW"/>
+                                <Label Width="220" Height="20" Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Do not check file integrity" FontSize="14"/>
+                                <ui:ToggleSwitch Width="40" Height="30" Margin="0,-40,50,0" VerticalAlignment="Stretch" HorizontalAlignment="Right" IsOn="False" Name="ToggleSwitch_DontCheakFI"/>
+                                <Label Width="180" Height="25" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Launcher Settings" FontSize="20"/>
+                                <Label Width="170" Height="20" Margin="20,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Background Path" FontSize="14"/>
+                                <TextBox Width="370" Height="30" Margin="0,-30,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" Text="Default" Name="TextBox_Background"/>
+                                <Label Width="170" Height="20" Margin="20,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Background blur" FontSize="14" />
+                                <Slider Width="370" Height="30" Margin="0,-30,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" Minimum="0" Maximum="1" Value="0" TickFrequency="0.01" IsSnapToTickEnabled="True" Name="Slider_Background_blur"/>
+                                <Label Width="150" Height="20" Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Download Source" FontSize="14"/>
+                                <ComboBox Width="370" Height="30" Margin="0,-25,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedIndex="0" FontSize="14" Name="ComboBox_Download_Source">
+                                    <ComboBoxItem>Auto select</ComboBoxItem>
+                                    <ComboBoxItem>MOJANG</ComboBoxItem>
+                                    <ComboBoxItem>BMCLAPI</ComboBoxItem>
+                                    <ComboBoxItem>MCBBS</ComboBoxItem>
+                                    <ComboBoxItem>TSS</ComboBoxItem>
+                                </ComboBox>
+                                <Label Width="170" Height="20" Margin="20,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Number of download threads" FontSize="14"/>
+                                <Slider Width="370" Height="30" Margin="0,-30,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" Minimum="1" Maximum="512" Value="128" TickFrequency="1" IsSnapToTickEnabled="True" Name="Slider_NumofDownThreads"/>
+                                <Label Width="150" Height="20" Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Check for updates" FontSize="14"/>
+                                <ComboBox Width="370" Height="30" Margin="0,-25,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedIndex="0" FontSize="14" Name="ComboBox_UpdateCS">
+                                    <ComboBoxItem>Every startup</ComboBoxItem>
+                                    <ComboBoxItem>Once a day</ComboBoxItem>
+                                    <ComboBoxItem>Once a week</ComboBoxItem>
+                                    <ComboBoxItem>Once a month</ComboBoxItem>
+                                    <ComboBoxItem>Never</ComboBoxItem>
+                                </ComboBox>
+                                <Label Width="150" Height="20" Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Updates Source" FontSize="14"/>
+                                <ComboBox Width="370" Height="30" Margin="0,-25,50,0" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedIndex="0" FontSize="14" Name="ComboBox_UpadteSource">
+                                    <ComboBoxItem>Github</ComboBoxItem>
+                                    <ComboBoxItem>Gitlab</ComboBoxItem>
+                                </ComboBox>
+                                <Button Width="150" Height="35" Margin="0,10,210,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" Content="Check for updates"/>
+                                <Button Width="150" Height="35" Margin="160,-35,50,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" Content="Clean cache"/>
+                                <Label Width="140" Height="25" Margin="5,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="About" FontSize="20"/>
+                                <Image Width="75" Height="75" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"  Source="/logo.png" />
+                                <Label Width="250" Height="20" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Aurora Minecraft Launcher" FontSize="16"/>
+                                <Label Width="200" Height="20" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Version: Alpha230806 E1" FontSize="14"/>
+                                <Label Width="150" Height="20" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Content="©2023 GT Studio" FontSize="14"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <ui:NavigationView IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Height="435" Name="MainNavView" VerticalAlignment="Top" HorizontalAlignment="Left" SelectionChanged="MainNavView_SelectionChanged">
+                <ui:NavigationView.MenuItems>
+                    <ui:NavigationViewItem Content="Home" Name="Home">
+                        <ui:NavigationViewItem.Icon>
+                            <controls:SymbolIcon Symbol="Home" />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItem Content="Account" Name="Account">
+                        <ui:NavigationViewItem.Icon>
+                            <controls:SymbolIcon Symbol="AddFriend"  />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItem Content="Download" Name="Download">
+                        <ui:NavigationViewItem.Icon>
+                            <controls:SymbolIcon Symbol="Download"  />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItem Content="Settings" Name="Settings">
+                        <ui:NavigationViewItem.Icon>
+                            <controls:SymbolIcon Symbol="Setting"  />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                </ui:NavigationView.MenuItems>
+                <Frame x:Name="ContentFrame" />
+            </ui:NavigationView>
+        </Grid>
+    </ui:SimpleStackPanel>
+</Window>
